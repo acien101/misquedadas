@@ -16,8 +16,8 @@ done
 while true; do
     echo '';
     echo 'Cuando acabe esta instalación has de:'
-    echo '-- descargar de Moodle el fichero "mapkeys.js" y guardarlo en "./js/"'
-    echo '-- descargar de Moodle el fichero "keys.js" y guardarlo en "./"'
+    echo '-- descargar de Moodle el fichero "mapkeys.js" y guardarlo en "./js/" del servidor personal'
+    echo '-- descargar de Moodle el fichero "keys.js" y guardarlo en "./" del servidor personal'
     read -p 'Entendido (sí/no) ' sn
     case $sn in
     	[Ss]* ) echo ''; echo 'Estupendo, cuando lo hayas hecho:';
