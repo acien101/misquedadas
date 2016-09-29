@@ -1,0 +1,1 @@
+[{"id":1,"nombre":"comida","nombre_peña":"peludos","id_sitio":1,"fechahora":"2016-06-30T13:00:00.000Z","foto":"foto1.jpg"},{"id":2,"nombre":"cena","nombre_peña":"muppets","id_sitio":1,"fechahora":"2016-07-01T21:30:00.000Z","foto":"foto2.jpg"},{"id":3,"nombre":"merienda","nombre_peña":"peludos","id_sitio":2,"fechahora":"2016-07-01T17:00:00.000Z","foto":"foto3.jpg"}]

@@ -1,0 +1,158 @@
+#!/bin/bash
+#set -x
+#set -v
+set -e
+p=$$
+d=`date +%F`
+echo ''
+echo '-----------------------------------------------------------------------------'
+echo ' TESTS del entorno "node" y de la "BBDD" para el servicio de "misquedadas"   '
+echo '    (El servicio de "misquedadas" debe estar arrancado: npm start)           '
+echo '-----------------------------------------------------------------------------'
+echo ''
+echo 'TESTS: BBDD, test para ver si se puede acceder a la BBDD a traves de servicio web de "misquedadas"'; echo -n '  -->  '
+R=$(curl -O -w "%{http_code}" http://localhost:8080/quedadas 2> /dev/null);       #echo '$R= '$R
+if [ $R != "200" ]; then echo 'BBDD test error - No hat acceso a la BBDD por REST'; exit 1; else echo 'TEST OK'; fi
+#
+echo ''
+echo 'TESTS: Quedadas, test para ver si hay "quedadas" en la BBDD'; echo -n '  -->  '
+Q=$(curl http://localhost:8080/quedadas 2> /dev/null | node tests/losnombres.js); #echo '$Q= '$Q
+Qid=$(curl http://localhost:8080/quedadas 2> /dev/null | node tests/losids.js);   #echo '$Qid= '$Qid
+if (node tests/estavacia.js $Q); then echo 'BBDD test error - No hay "quedadas"'; exit 1; else echo 'HAY "quedadas": '$Q; fi
+#
+echo ''
+echo 'TESTS: Peñas, test para ver si hay "peñas" en la BBDD'; echo -n '  -->  '
+P=$(curl http://localhost:8080/penias 2> /dev/null | node tests/losnombres.js);   #echo '$P= '$P
+# las penias no tienen id ---
+if (node tests/estavacia.js $P); then echo 'BBDD test error - No hay "peñas"'; exit 1; else echo 'HAY "peñas": '$P; fi
+#
+echo ''
+echo 'TESTS: Gente, test para ver si hay "gente" en la BBDD'; echo -n '  -->  '
+G=$(curl http://localhost:8080/gente 2> /dev/null | node tests/losnombres.js);    #echo '$G= '$G
+Gid=$(curl http://localhost:8080/gente 2> /dev/null | node tests/losids.js);      #echo '$Gid= '$Gid
+if (node tests/estavacia.js $G); then echo 'BBDD test error - No hay "gente"'; exit 1; else echo 'HAY "gente": '$G; fi
+#
+echo ''
+echo 'TESTS: Sitios, test para ver si hay "sitios" en la BBDD'; echo -n '  -->  '
+S=$(curl http://localhost:8080/sitios 2> /dev/null | node tests/losnombres.js);   #echo '$S= '$S
+Sid=$(curl http://localhost:8080/sitios 2> /dev/null | node tests/losids.js);     #echo '$Sid= '$Sid
+if (node tests/estavacia.js $S); then echo 'BBDD test error - No hay "sitios"'; exit 1; else echo 'HAY "sitios": '$S; fi
+#
+echo ''
+echo 'TESTS: QuedadaYgente-asistencias, test para ver si existe la "quedada" y la "gente" en todas las "asistencias" de la BBDD'; echo -n '  -->  '
+Aid=$(curl http://localhost:8080/asistencias 2> /dev/null | node tests/lasasistencias.js);   #echo '$Aid= '$Aid
+for ano in $Aid ; do       #echo '$ano= '$ano', $Aid= '$Aid;
+   aqid=$(node tests/laquedadadeasistencia.js $ano); #echo '$aqid= '$aqid;
+   agid=$(node tests/lagentedeasistencia.js $ano); #echo '$agid= '$agid;
+   if (node tests/estavacia.js $aqid); then echo 'BBDD test error - No hay "quedada" en la "asistencia"'; exit 1; fi
+   if (node tests/estavacia.js $agid); then echo 'BBDD test error - No hay "gente" en la "asistencia"'; exit 1; fi
+   qna=$(curl http://localhost:8080/quedada/$aqid 2> /dev/null | node tests/elnombre.js);  #echo '$qna= '$qna
+   gna=$(curl http://localhost:8080/gente/$agid 2> /dev/null | node tests/elnombre.js);  #echo '$gna= '$gna
+   if (node tests/estavacia.js $qna); then echo 'BBDD test error - No existe la "quedada" '$aqid' de la "asistencia".';
+   elif (node tests/estavacia.js $gna); then echo 'BBDD test error - No existe la "gente" '$agid' de la "asistencia".';
+   else echo -n 'Existe la "quedada" '$qna' y la "gente" '$gna' de la "asistentencia". '; fi 
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Peña-quedadas, test para ver si hay "peña" para todas las "quedadas" en la BBDD'; echo -n '  -->  '
+for qno in $Qid ; do       #echo '$qno= '$qno', $Qid= '$Qid;
+   qna=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/elnombre.js);  #echo '$qna= '$qna
+   p=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/lapenia.js);     #echo '$p= '$p
+   if (node tests/estavacia.js $p); then echo 'BBDD test error - No hay "peña" en la "quedada" '$qna;
+   elif ! (node tests/estaen.js $p $P); then echo 'BBDD test error - No existe la "peña": '$p' de la "quedada": '$qna;
+   else echo -n 'Existe la "peña" '$p' de la "quedada" '$qna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Sitio-quedadas, test para ver si hay "sitio" para todas las "quedadas" en la BBDD'; echo -n '  -->  '
+for qno in $Qid ; do             #echo '$qno= '$qno', $Qid= '$Qid;
+   qna=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/elnombre.js);     #echo '$qna='$qna
+   sid=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/eliddelsitio.js); #echo '$sid='$sid
+   sna=$(curl http://localhost:8080/sitio/$sid 2> /dev/null | node tests/elnombre.js);       #echo '$sna= '$sna
+   if (node tests/estavacia.js $sid); then echo 'BBDD test error - No hay "sitio" definido en la "quedada" '$qna;
+   elif (node tests/estavacia.js $sna); then echo 'BBDD test error - No existe el "sitio" con id= '$sid' identificado en la "quedada": '$qna;
+   else echo -n 'Existe el "sitio" '$sna' de la "quedada" '$qna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: FechaHora-quedadas, test para ver si hay "fechahora" para todas las "quedadas" en la BBDD'; echo -n '  -->  '
+for qno in $Qid ; do       #echo '$qno= '$qno', $Qid= '$Qid;
+   qna=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/elnombre.js);    #echo '$qna= '$qna
+   fh=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/lafechahora.js);  #echo '$fh= '$fh
+   if (node tests/estavacia.js $fh); then echo 'BBDD test error - No hay "fechahora" en la "quedada" '$qna;
+   else echo -n 'Existe la "fechahora" '$fh' para la "quedada" '$qna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Foto-quedadas, test para ver si hay "foto" para todas las "quedadas" en la BBDD'; echo -n '  -->  '
+for qno in $Qid ; do  #echo '$qno= '$qno', $Qid= '$Qid;
+   qna=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/elnombre.js);   #echo '$qna= '$qna
+   f=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/lafoto.js);       #echo '$f= '$f
+   if (node tests/estavacia.js $f); then echo 'BBDD test error - No hay "nombre de fichero de foto" de la "quedada" '$qna;
+   elif ! (node tests/existeficherodefoto.js $f); then echo 'MEDIA test error - No Hay "fichero de la foto" '$f' de la "quedada" '$qna;
+   else echo -n 'Existe la "foto" '$f' de la "quedada" '$qna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Gente-peñas, test para ver si hay "gente" para todas las "peñas" en la BBDD'; echo -n '  -->  '
+for pn in $P ; do  #echo '$P= '$P', $pn= '$pn;
+   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
+   pgid=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/losidsdegente.js); #echo '$pgid='$pgid
+   if (node tests/estavacia.js $pgid); then echo 'BBDD test error - No hay "gente" perteneciente a la "peña" '$pn;
+   else 
+     for id in $pgid; do #echo '$id= '$id;
+       gna=$(curl http://localhost:8080/gente/$id 2> /dev/null | node tests/elnombre.js);    #echo '$gna= '$gna
+       if (node tests/estavacia.js $gna); then echo 'BBDD test error - No existe la "gente" con id= '$id' identificado en la "peña": '$pn;
+     else echo -n 'Existe la "gente" '$gna' de la "peña" '$pn'. '; fi ; done; fi;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Alias-gente, test para ver si hay "alias" para toda la gente en la BBDD'; echo -n '  -->  '
+for gno in $Gid ; do  #echo '$Gid= '$Gid', $gno= '$gno;
+   gna=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/elnombre.js); #echo '$gna= '$gna
+   ali=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/elalias.js);  #echo '$ali= '$ali
+   if (node tests/estavacia.js $ali); then echo 'BBDD test error - No hay "alias" en la "gente" '$gna;
+   else echo -n 'Existe el "alias" '$ali' para la "gente" '$gna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Foto-gente, test para ver si hay "foto" para toda la "gente" en la BBDD'; echo -n '  -->  '
+for gno in $Gid ; do  #echo '$gno= '$gno', $Gid= '$Gid;
+   gna=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/elnombre.js);   #echo '$gna= '$gna
+   gf=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/lafoto.js);    #echo '$gf= '$gf
+   if (node tests/estavacia.js $gf); then echo 'BBDD test error - No hay "nombre de fichero de foto" de la "gente" '$gna;
+   elif ! (node tests/existeficherodefoto.js $gf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$gf' de la "gente" '$gna;
+   else echo -n 'Existe la "foto" '$gf' de la "gente" '$gna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Geolocalización-sitio, test para ver si hay "geolocalizacion" para todos los "sitios" en la BBDD'; echo -n '  -->  '
+for sno in $Sid ; do  #echo '$Sid= '$Sid', $sno= '$sno;
+   sna=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/elnombre.js); #echo '$sna= '$sna
+   sgeo=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/lageolocalizacion.js);  #echo '$sgeo= '$sgeo
+   if (node tests/estavacia.js $sgeo); then echo 'BBDD test error - No hay "geolocalizacion" en el "sitio" '$sna;
+   else echo -n 'Existe la "geolocalizacion" '$sgeo' para el "sitio" '$sna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Foto-sitio, test para ver si hay "foto" para todos los "sitios" en la BBDD'; echo -n '  -->  '
+for sno in $Sid ; do  #echo '$sno= '$sno', $Sid= '$Sid;
+   sna=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/elnombre.js);   #echo '$sna= '$sna
+   sf=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/lafoto.js);    #echo '$sf= '$sf
+   if (node tests/estavacia.js $sgeo); then echo 'BBDD test error - No hay "nombre de fichero de foto" del "sitio" '$sna;
+   elif ! (node tests/existeficherodefoto.js $sf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$sf' del "sitio" '$sna;
+   else echo -n 'Existe la "foto" '$sf' del "sitio" '$sna'. '; fi ;
+done
+echo '';
+#set -x; echo "------------------------------------------------------------------------------------------------"
+#unset -x; echo "------------------------------------------------------------------------------------------------"
+#

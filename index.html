@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mis Quedadas</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <script>var lqa=0;</script> <!-- lqa (LaQuedadaActiva) can be set through url "/lqa/:id" -->
+  <script type="text/javascript" src="/js/main.js" ></script>
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+</head>
+<body>
+  <div id="main">
+    <div id="cabecera"><!-- <p>Cabecera</p> -->
+      <div id="menuquedadas" title="lista de quedadas, pulse para seleccionar">
+         <button class="button" type="button" onclick="ajaxCall('/quedadas',pintamenuquedadas)">Quedadas</button></div>
+      <div id="menupenias" title="peñas registradas">
+         <button class="button" type="button" onclick="ajaxCall('/penias',pintamenupenias)">Peñas</button></div>
+      <div id="menugente" title="gente registrada">
+         <button class="button" type="button" onclick="ajaxCall('/gente',pintamenugente)">Gente</button></div>
+      <div id="menusitios" title="lista de sitios registrados">
+         <button class="button" type="button" onclick="ajaxCall('/sitios',pintamenusitios)">Sitios</button></div>
+      <div id="quedadanombre" title="Nombre de la quedada"></div>
+      <div id="quedadafecha" title="Fecha de la quedada"></div>
+      <div id="botonborrar" title="Elimina la quedada">
+         <button class="imgbutton" type="button" onclick="borra()"><img id="imagenboton" src="/icons/borrar.jpg" />
+         </button></div>
+      <div id="botonreplantear" title="Replantea la quedada">
+         <button class="imgbutton" type="button" onclick="replantea()"><img id="imagenboton" src="/icons/replantear.jpg" />
+         </button></div>
+      <div id="botonnoasistir" title="No asistir">
+         <button class="imgbutton" type="button" onclick="noasiste()"><img id="imagenboton" src="/icons/noasistir.jpg"/>
+         </button>
+      </div>
+      <div id="botonasistir" title="Asistir">
+         <button class="imgbutton" type="button" onclick="asiste()"><img id="imagenboton" src="/icons/asistir.jpg" />
+         </button></div>
+      <div id="botonnuevaquedada" title="Nueva quedada">
+         <button class="imgbutton" type="button" onclick="nueva()"><img id="imagenboton" src="/icons/nueva.jpg" />
+         </button></div>
+    </div>
+    <div id="cuerpo">
+       <div id="mapa"></div>
+       <script type="text/javascript" src="/js/mapkeys.js"></script>
+       <script type="text/javascript" src="/js/mapmain.js"></script>
+       <div id="fotoquedada"></div>
+       <div id="sitio"></div>
+       <div id="fotositio"></div>
+    </div>
+    <div id="pie"></div>
+  </div>
+  <script>mainpage();</script>
+</body>
+</html>

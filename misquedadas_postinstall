@@ -1,0 +1,30 @@
+#!/bin/bash
+#set -x
+#set -v
+set -e
+while true; do
+    echo ''; read -p '¿Quieres instalar el ejemplo de "misquedadas"? (sí/no) ' sn
+    case $sn in
+        [Ss]* ) tar xvzf misquedadas-ej-media.taz;
+                mysql -u root -p < misquedadas-ej-backup.sql;
+                break;;
+        [Nn]* ) echo ''; 
+                echo 'Rellena tu propia BBDD y guarda los ficheros multimedia con las fotos en "./media/"'; break;;
+        * ) echo ''; echo 'Por favor, contesta sí o no.';;
+    esac
+done
+while true; do
+    echo '';
+    echo 'Cuando acabe esta instalación has de:'
+    echo '-- descargar de Moodle el fichero "mapkeys.js" y guardarlo en "./js/"'
+    echo '-- descargar de Moodle el fichero "keys.js" y guardarlo en "./"'
+    read -p 'Entendido (sí/no) ' sn
+    case $sn in
+    	[Ss]* ) echo ''; echo 'Estupendo, cuando lo hayas hecho:';
+                         echo '--  arranca el servicio con "npm start"'; 
+                         echo '--  comprueba el contenido de tu DDBB con "npm test"';
+                         echo 'y ya podrás utilizarlo con un "navegador web"m test"'; echo ''; break;;
+       	[Nn]* ) echo ''; echo 'Pregunta al profesor'; exit 1;;
+       	* ) echo ''; echo ''; echo 'Por favor, contesta sí o no.';;
+    esac
+done

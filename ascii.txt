@@ -1,0 +1,28 @@
+10:08:46.927013 == Info:   Trying 127.0.0.1...
+10:08:46.927189 == Info: Connected to localhost (127.0.0.1) port 8080 (#0)
+10:08:46.927226 => Send header, 86 bytes (0x56)
+0000: GET /quedadas HTTP/1.1
+0018: Host: localhost:8080
+002e: User-Agent: curl/7.47.0
+0047: Accept: */*
+0054: 
+10:08:46.932151 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+10:08:46.932179 <= Recv header, 32 bytes (0x20)
+0000: Content-Type: application/json
+10:08:46.932195 <= Recv header, 21 bytes (0x15)
+0000: Content-Length: 370
+10:08:46.932205 <= Recv header, 37 bytes (0x25)
+0000: Date: Wed, 28 Sep 2016 08:08:46 GMT
+10:08:46.932216 <= Recv header, 24 bytes (0x18)
+0000: Connection: keep-alive
+10:08:46.932225 <= Recv header, 2 bytes (0x2)
+0000: 
+10:08:46.932233 <= Recv data, 370 bytes (0x172)
+0000: [{"id":1,"nombre":"comida","nombre_pe..a":"peludos","id_sitio":1
+0040: ,"fechahora":"2016-06-30T13:00:00.000Z","foto":"foto1.jpg"},{"id
+0080: ":2,"nombre":"cena","nombre_pe..a":"muppets","id_sitio":1,"fecha
+00c0: hora":"2016-07-01T21:30:00.000Z","foto":"foto2.jpg"},{"id":3,"no
+0100: mbre":"merienda","nombre_pe..a":"peludos","id_sitio":2,"fechahor
+0140: a":"2016-07-01T17:00:00.000Z","foto":"foto3.jpg"}]
+10:08:46.932331 == Info: Connection #0 to host localhost left intact

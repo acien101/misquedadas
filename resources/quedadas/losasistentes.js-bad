@@ -1,0 +1,13 @@
+var path = require('path'); var sequelize = require('../../ddbb');
+var asistencia = require('../../models');
+module.exports = function losasistentsQuedadaQuedadas(req,res,next) { 
+      //console.log('losasistentsQuedada Quedadas - req= '+req); console.log('losasistentsQuedada Quedadas - req params id= '+req.params.id);
+      var asistencia = sequelize.import(path.join(__dirname,'../../models/asistencia'));
+      //console.log('losasistentsQuedadaQuedadas - id= '+req.params.id);
+      asistencia.all({where: {id_quedada: req.params.id}}).then (function(asistencia) {
+          if (asistencia) {
+                //console.log('losasistentesQuedada Quedadas - aistencia = '+asistencia); 
+                res.send(asistencia); next() }
+          else throw new Error('Error: No hay losasistentesQuedada....')
+      }).catch(function(error) {console.log('Error: function losasistentesQuedadaQuedadas - catch');next(error)})
+};

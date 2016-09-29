@@ -1,0 +1,1 @@
+exports.lqa = require('./lqa');

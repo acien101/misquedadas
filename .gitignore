@@ -1,0 +1,13 @@
+/logs/**
+!/logs/readme.txt
+/test_logs/**
+!/test_logs/readme.txt
+/media/**
+!/media/readme.txt
+#/misquedadas-ej-backup.sql
+#/misquedadas-ej-media.taz
+#/misquedadas_server
+/node_modules
+/tests
+/keys.js
+/js/mapkeys.js
