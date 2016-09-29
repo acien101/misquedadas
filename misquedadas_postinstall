@@ -23,7 +23,8 @@ while true; do
     	[Ss]* ) echo ''; echo 'Estupendo, cuando lo hayas hecho:';
                          echo '--  arranca el servicio con "npm start"'; 
                          echo '--  comprueba el contenido de tu DDBB con "npm test"';
-                         echo 'y ya podrás utilizarlo con un "navegador web"m test"'; echo ''; break;;
+                         echo 'y ya podrás utilizarlo con un "navegador web":';
+                         echo '--  "http://<ip de mi servidor personal>/misquedadas"'; echo ''; break;;
        	[Nn]* ) echo ''; echo 'Pregunta al profesor'; exit 1;;
        	* ) echo ''; echo ''; echo 'Por favor, contesta sí o no.';;
     esac
