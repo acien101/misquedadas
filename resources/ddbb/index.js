@@ -23,7 +23,8 @@ module.exports = function serializeDDBB(req,res,next) {
    //console.log('serializeDDBB - Penias');
    var penia = sequelize.import(path.join(__dirname,'../../models/penia'));
    penia.all().then (function(penia) {
-       if (penia) {ddbb['Penias']= penia.filter(onlyUnique);  resSend(); }
+       // ya son clavers únicas -- if (penia) {ddbb['Penias']= penia.filter(onlyUnique);  resSend(); }
+       if (penia) {ddbb['Penias']= penia;  resSend(); }
        else throw new Error('Error: No hay penia....')
    }).catch(function(error) {console.log('Error: function serializeDDBB- catch penia... '+error);next(error)});
    //console.log('serializeDDBB - Gente');

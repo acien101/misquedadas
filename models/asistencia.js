@@ -3,5 +3,5 @@ module.exports = function sequelizeAsistencia(sequelize, DataTypes) {
 			  { id_quedada: DataTypes.INTEGER(4),
                             id_gente: DataTypes.INTEGER(4)
 			  },{
-                            timestamps:false, tableName: 'asistencia' });
+                            timestamps:false, tableName: 'asiste' });
 };

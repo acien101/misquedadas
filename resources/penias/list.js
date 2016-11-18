@@ -9,7 +9,7 @@ function onlyUnique(value, index, self) {
 module.exports = function listPenias(req,res,next) { 
       var penia = sequelize.import(path.join(__dirname,'../../models/penia'));
       penia.all().then (function(penia) {
-          if (penia) {res.send(penia.filter(onlyUnique)); next() }
+          if (penia) {res.send(penia); next() }
           else throw new Error('Error: No hay penia....')
       }).catch(function(error) {console.log('Error: function listPenias - catch');next(error)})
 };

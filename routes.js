@@ -42,6 +42,8 @@ server.get('/penias', 			function(req,res,next) {console.log('route!! get /penia
 					resources.penias.list); 
 server.get('/penia/:nombre', 		function(req,res,next) {console.log('route!! get /penia/:nombre'); next();},
 					resources.penias.penia); 
+server.get('/penia/:nombre/escudo',	function(req,res,next) {console.log('route!! get /penia/:nombre/escudo'); next();},
+					resources.penias.escudo); 
 
 server.get('/gente', 			function(req,res,next) {console.log('route!! /gente'); next();},
 					resources.gente.list); 
@@ -62,6 +64,10 @@ server.post ('/asistencias/:idq/:idg',	function(req,res,next) {console.log('rout
 					resources.asistencias.asiste); 
 server.del ('/asistencias/:idq/:idg',	function(req,res,next) {console.log('route!! delete /asistencia/:idq/:idg'); next();},
 					resources.asistencias.noasiste); 
+server.get('/pertenencias',		function(req,res,next) {console.log('route!! get /pertenencias'); next();},
+					resources.pertenencias.list); 
+server.get('/pertenencias/:nombre',	function(req,res,next) {console.log('route!! get /pertenencias/:nombre'); next();},
+					resources.pertenencias.penia); 
 server.post ('/botones/nueva',		function(req,res,next) {console.log('route!! post /boton/nueva'); next();},
 					resources.botones.nueva); 
 server.post ('/botones/replantea',	function(req,res,next) {console.log('route!! post /boton/replantea'); next();},

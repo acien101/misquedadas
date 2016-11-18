@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: misquedadas
 -- ------------------------------------------------------
--- Server version	5.7.13-0ubuntu0.16.04.2
+-- Server version	5.7.16-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,26 +24,26 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `misquedadas` /*!40100 DEFAULT CHARACTE
 USE `misquedadas`;
 
 --
--- Table structure for table `asistencia`
+-- Table structure for table `asiste`
 --
 
-DROP TABLE IF EXISTS `asistencia`;
+DROP TABLE IF EXISTS `asiste`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `asistencia` (
-  `id_quedada` int(4) DEFAULT NULL,
-  `id_gente` int(4) DEFAULT NULL
+CREATE TABLE `asiste` (
+  `id_quedada` int(4) NOT NULL,
+  `id_gente` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `asistencia`
+-- Dumping data for table `asiste`
 --
 
-LOCK TABLES `asistencia` WRITE;
-/*!40000 ALTER TABLE `asistencia` DISABLE KEYS */;
-INSERT INTO `asistencia` VALUES (1,3),(2,2),(2,3),(3,3),(3,4);
-/*!40000 ALTER TABLE `asistencia` ENABLE KEYS */;
+LOCK TABLES `asiste` WRITE;
+/*!40000 ALTER TABLE `asiste` DISABLE KEYS */;
+INSERT INTO `asiste` VALUES (1,3),(2,2),(2,3),(3,3),(3,4);
+/*!40000 ALTER TABLE `asiste` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,8 +80,10 @@ DROP TABLE IF EXISTS `peña`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `peña` (
-  `nombre` varchar(30) DEFAULT NULL,
-  `id_gente` int(4) DEFAULT NULL
+  `nombre` varchar(30) NOT NULL,
+  `fecha_creación` date DEFAULT NULL,
+  `escudo` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,8 +93,31 @@ CREATE TABLE `peña` (
 
 LOCK TABLES `peña` WRITE;
 /*!40000 ALTER TABLE `peña` DISABLE KEYS */;
-INSERT INTO `peña` VALUES ('muppets',1),('muppets',2),('muppets',3),('muppets',4),('peludos',3),('peludos',4);
+INSERT INTO `peña` VALUES ('muppets','2010-01-01','escudo_muppets.jpg'),('peludos','2011-02-02','escudo_peludos.jpg');
 /*!40000 ALTER TABLE `peña` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pertenece`
+--
+
+DROP TABLE IF EXISTS `pertenece`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pertenece` (
+  `nombre` varchar(30) NOT NULL,
+  `id_gente` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pertenece`
+--
+
+LOCK TABLES `pertenece` WRITE;
+/*!40000 ALTER TABLE `pertenece` DISABLE KEYS */;
+INSERT INTO `pertenece` VALUES ('muppets',1),('muppets',2),('muppets',3),('muppets',4),('peludos',3),('peludos',4);
+/*!40000 ALTER TABLE `pertenece` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -158,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-23 12:58:09
+-- Dump completed on 2016-11-16 21:37:41

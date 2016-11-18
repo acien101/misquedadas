@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------------------------------
+Este documento incluye los textos que hay que publicar para que los alumnos realicen el OAM de su portal
+La publicación se hará en el Moodle de la UPM como una página web.
+Este texto tiene, por lo tanto, varias partes que se deberán incluir en dicho Moodle. Las partes son:
+-- Referencia. El texto a incluir en la línea de referencia en la página principal de Moodle
+-- Presentación. EL texto a incluir como descripción de la página web.
+-- Contenido. El contenido de la propia página Web
+---------------------------------------------------------------------------------------------------------
+Referencia
+----------
+Instalación y pruebas del portal "misquedadas"
+
+Presentación
+------------
+Este documento describe los pasos de instalación, puesta en marcha, pruebas y re-arranque del servicio "misquedadas",
+hasta quedar operativo en los servidores personales individuales preparados en containers del DIT para los alumnos.
+
+Contenido
+---------
+<h1 dir="ltr"><span class="" style="font-size: large;">Arranque y acceso al Servidor Personal Virtual</span></h1>
+  <ul><li dir="ltr">
+        Arrancar el Servidor Personal desde Moodle de FTEL
+        <br><i> Moodle de la UPM -&gt; Asignatura FTEL -&gt; Tema 6 - Proyecto del curso -&gt;
+        <a href="https://moodle.upm.es/titulaciones/oficiales/mod/url/view.php?id=500639">
+        Servidor Personal en la nube DIT: arranque, estado y acceso</a></i></li>
+      <li dir="ltr">
+        Descargar en la máquina local la clave privada de acceso al servidor según se indica
+        en las instrucciones de la página indicada en el paso anterior</li>
+      <li dir="ltr">
+        Acceder, por ssh, al Servidor Personal siguiendo las instrucciones de la misma página</li></ul>
+
+<h1 dir="ltr"><span class="" style="font-size: large;">Instalación de la aplicación</span></h1>
+  <ul><li dir="ltr">
+        En la consola de comandos del Servidor Personal ejecutar:</li>
+      <ul><li><b>cd ~</b></li>
+          <li><b>git clone git://github.com/afcGitHub/misquedadas.git</b></li>
+          <li><b>cd ~/misquedadas; npm install</b></li>
+          <br>Y seguir las indicaciones que se presentan</ul></ul>
+
+<h1 dir="ltr"><span class="" style="font-size: large;">Carga de contenidos</span></h1>
+  <ul><li><b>
+        Rellenar la BBDD misquedadas</b>, de forma similar a como se hizo en la práctica de BBDD,
+        con los datos que se quieran presentar en el portal</li>
+      <li><b>
+        Subir</b> a ~/misquedadas/media los <b>ficheros multimedia</b> que se han referenciado en la BBDD</li></ul>
+
+<h1 dir="ltr"><span class="" style="font-size: large;">Arranque del servicio y pruebas</span></h1>
+  <ul><li>
+        En la consola de comandos del servidor personal ejecutar: <b>npm start; npm test</b></li></ul>
+
+<h1 dir="ltr"><span class="" style="font-size: large;">Comprobación del Servicio</span></h1>
+   <ul><li>
+        CHEQUEAR visualmente el <b>resultado del test</b> anterior para comprobar que no hay inconsistencias
+        en la BBDD</li>
+       <li>
+        NAVEGAR por la aplicación: <b>navegador -&gt; 
+            "http://&lt;la ip de mi servidor personal&gt;/misquedadas"</b></li></ul>
+
+<h1 dir="ltr"><span class="" style="font-size: large;">Rearranque del servidor y del servicio</span></h1>
+   <p dir="ltr">CADA vez que se vuelva a arrancar el servidor personal, acceda a su consola de comandos y:</p>
+   <ul><li dir="ltr">
+        <b>cd ~/misquedadas; npm start; npm test;</b></li></ul>

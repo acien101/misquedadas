@@ -8,8 +8,9 @@ body{
 #cuerpo {      height: 480px;                overflow: hidden; border: 0px solid black;}
 #mapa {        height: 100%;  width:  714px; float: left;      border: 0px solid black;}
 #fotoquedada { height: 200px; width:  302px; float: right;     border: 0px solid black;}
-#fotositio {   height: 180px; width:  282px; float: right;     border: 0px solid black; padding: 13px; }
-#sitio {       height:  40px; width:  282px; float: right;     border: 0px solid black; padding: 30px 13px 0px 13px; text-align: center; }
+#fotositio {   height: 180px; width:  282px; float: right;     border: 0px solid black; padding: 5px 13px 5px 13px; }
+#penia {       /*height:  15px;*/ width:  282px; float: right;     border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; font-size: x-large; color: red;}
+#sitio {       /*height:  25px;*/ width:  282px; float: right;     border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; }
 #pie {         height: 122px;                overflow: hidden; border: 0px solid black;}
 #asisten {       height: 256px; width:  302px; float: right;     border: 0px solid black;}
 #got{ border: 0px solid black }

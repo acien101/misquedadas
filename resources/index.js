@@ -3,6 +3,7 @@ exports.penias = require('./penias');
 exports.gente = require('./gente');
 exports.sitios = require('./sitios');
 exports.asistencias = require('./asistencias');
+exports.pertenencias = require('./pertenencias');
 exports.main = require('./main');
 exports.favicon = require('./favicon');
 exports.js = require('./js');

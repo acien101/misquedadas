@@ -1,3 +1,4 @@
+/ascii.txt
 /logs/**
 !/logs/readme.txt
 /test_logs/**

@@ -16,11 +16,14 @@ var gente = ddbb.import(path.join(__dirname,'models/gente'));
 var sitio = ddbb.import(path.join(__dirname,'models/sitio'));
 var asistencia = ddbb.import(path.join(__dirname,'models/asistencia'));
     asistencia.removeAttribute('id');
+var pertenencia = ddbb.import(path.join(__dirname,'models/pertenencia'));
+    pertenencia.removeAttribute('id');
 
 quedada.sync({force: false}).then(function () {return quedada;});
 penia.sync({force: false}).then(function () {return penia;});
 gente.sync({force: false}).then(function () {return gente;});
 sitio.sync({force: false}).then(function () {return sitio;});
 asistencia.sync({force: false}).then(function () {return asistencia;});
+pertenencia.sync({force: false}).then(function () {return pertenencia;});
 
 module.exports = ddbb;

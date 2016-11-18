@@ -93,7 +93,7 @@ for qno in $Qid ; do  #echo '$qno= '$qno', $Qid= '$Qid;
    qna=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/elnombre.js);   #echo '$qna= '$qna
    f=$(curl http://localhost:8080/quedada/$qno 2> /dev/null | node tests/lafoto.js);       #echo '$f= '$f
    if (node tests/estavacia.js $f); then echo 'BBDD test error - No hay "nombre de fichero de foto" de la "quedada" '$qna;
-   elif ! (node tests/existeficherodefoto.js $f); then echo 'MEDIA test error - No Hay "fichero de la foto" '$f' de la "quedada" '$qna;
+   elif ! (node tests/existefichero.js $f); then echo 'MEDIA test error - No Hay "fichero de la foto" '$f' de la "quedada" '$qna;
    else echo -n 'Existe la "foto" '$f' de la "quedada" '$qna'. '; fi ;
 done
 echo '';
@@ -102,7 +102,7 @@ echo ''
 echo 'TESTS: Gente-peñas, test para ver si hay "gente" para todas las "peñas" en la BBDD'; echo -n '  -->  '
 for pn in $P ; do  #echo '$P= '$P', $pn= '$pn;
    pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
-   pgid=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/losidsdegente.js); #echo '$pgid='$pgid
+   pgid=$(curl http://localhost:8080/pertenencias 2> /dev/null | node tests/losidsdegente.js $pna); #echo '$pgid='$pgid
    if (node tests/estavacia.js $pgid); then echo 'BBDD test error - No hay "gente" perteneciente a la "peña" '$pn;
    else 
      for id in $pgid; do #echo '$id= '$id;
@@ -111,6 +111,28 @@ for pn in $P ; do  #echo '$P= '$P', $pn= '$pn;
      else echo -n 'Existe la "gente" '$gna' de la "peña" '$pn'. '; fi ; done; fi;
 done
 echo '';
+#
+echo ''
+echo 'TESTS: Fecha_de-creación-peñas, test para ver si hay "fecha de creación" para todas las "peñas" en la BBDD'; echo -n '  -->  '
+for pn in $P ; do       #echo '$P= '$P', $pn= '$pn;
+   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
+   fh=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/lafechadecreacion.js);  #echo '$fh= '$fh
+   if (node tests/estavacia.js $fh); then echo 'BBDD test error - No hay "fecha de creacion" en la "peña" '$pna;
+   else echo -n 'Existe la "fecha de creación" '$fh' para la "quedada" '$qna'. '; fi ;
+done
+echo '';
+#
+echo ''
+echo 'TESTS: Escudo-peñas, test para ver si hay "Escudo" para todas las "peñas" en la BBDD'; echo -n '  -->  '
+for pn in $P ; do       #echo '$P= '$P', $pn= '$pn;
+   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
+   f=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/elescudo.js);       #echo '$f= '$f
+   if (node tests/estavacia.js $f); then echo 'BBDD test error - No hay "nombre de fichero de escudo" de la "peña" '$pna;
+   elif ! (node tests/existefichero.js $f); then echo 'MEDIA test error - No Hay "fichero del escudo" '$f' de la "peña" '$pna;
+   else echo -n 'Existe el "escudo" '$f' de la "peña" '$pna'. '; fi ;
+done
+echo '';
+#
 #
 echo ''
 echo 'TESTS: Alias-gente, test para ver si hay "alias" para toda la gente en la BBDD'; echo -n '  -->  '
@@ -128,7 +150,7 @@ for gno in $Gid ; do  #echo '$gno= '$gno', $Gid= '$Gid;
    gna=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/elnombre.js);   #echo '$gna= '$gna
    gf=$(curl http://localhost:8080/gente/$gno 2> /dev/null | node tests/lafoto.js);    #echo '$gf= '$gf
    if (node tests/estavacia.js $gf); then echo 'BBDD test error - No hay "nombre de fichero de foto" de la "gente" '$gna;
-   elif ! (node tests/existeficherodefoto.js $gf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$gf' de la "gente" '$gna;
+   elif ! (node tests/existefichero.js $gf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$gf' de la "gente" '$gna;
    else echo -n 'Existe la "foto" '$gf' de la "gente" '$gna'. '; fi ;
 done
 echo '';
@@ -149,7 +171,7 @@ for sno in $Sid ; do  #echo '$sno= '$sno', $Sid= '$Sid;
    sna=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/elnombre.js);   #echo '$sna= '$sna
    sf=$(curl http://localhost:8080/sitio/$sno 2> /dev/null | node tests/lafoto.js);    #echo '$sf= '$sf
    if (node tests/estavacia.js $sgeo); then echo 'BBDD test error - No hay "nombre de fichero de foto" del "sitio" '$sna;
-   elif ! (node tests/existeficherodefoto.js $sf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$sf' del "sitio" '$sna;
+   elif ! (node tests/existefichero.js $sf); then echo 'MEDIA test error - No Hay "fichero de la foto" '$sf' del "sitio" '$sna;
    else echo -n 'Existe la "foto" '$sf' del "sitio" '$sna'. '; fi ;
 done
 echo '';
