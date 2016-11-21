@@ -1,6 +1,0 @@
-mv misquedadas-TEST001-backup.sql TEST001-backup.sql
-mv misquedadas-TEST002-backup.sql TEST002-backup.sql
-mv misquedadas-TEST003-backup.sql TEST003-backup.sql
-mv misquedadas-TEST004-backup.sql TEST004-backup.sql
-mv misquedadas-TEST005-backup.sql TEST005-backup.sql
-mv misquedadas-TEST-media.taz TEST-media.taz
