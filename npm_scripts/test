@@ -2,8 +2,6 @@
 #set -x
 #set -v
 set -e
-p=$$
-d=`date +%F`
 echo ''
 echo '-----------------------------------------------------------------------------'
 echo ' TESTS del entorno "node" y de la "BBDD" para el servicio de "misquedadas"   '
@@ -12,7 +10,7 @@ echo '--------------------------------------------------------------------------
 echo ''
 echo 'TESTS: BBDD, test para ver si se puede acceder a la BBDD a traves de servicio web de "misquedadas"'; echo -n '  -->  '
 R=$(curl -O -w "%{http_code}" http://localhost:8080/quedadas 2> /dev/null);       #echo '$R= '$R
-if [ $R != "200" ]; then echo 'BBDD test error - No hat acceso a la BBDD por REST'; exit 1; else echo 'TEST OK'; fi
+if [ $R != "200" ]; then echo 'BBDD test error - No hat acceso a la BBDD por REST'; exit 1; else rm quedadas; echo 'TEST OK'; fi
 #
 echo ''
 echo 'TESTS: Quedadas, test para ver si hay "quedadas" en la BBDD'; echo -n '  -->  '
@@ -100,39 +98,17 @@ echo '';
 #
 echo ''
 echo 'TESTS: Gente-peñas, test para ver si hay "gente" para todas las "peñas" en la BBDD'; echo -n '  -->  '
-for pn in $P ; do  #echo '$P= '$P', $pn= '$pn;
-   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
-   pgid=$(curl http://localhost:8080/pertenencias 2> /dev/null | node tests/losidsdegente.js $pna); #echo '$pgid='$pgid
-   if (node tests/estavacia.js $pgid); then echo 'BBDD test error - No hay "gente" perteneciente a la "peña" '$pn;
-   else 
-     for id in $pgid; do #echo '$id= '$id;
-       gna=$(curl http://localhost:8080/gente/$id 2> /dev/null | node tests/elnombre.js);    #echo '$gna= '$gna
-       if (node tests/estavacia.js $gna); then echo 'BBDD test error - No existe la "gente" con id= '$id' identificado en la "peña": '$pn;
-     else echo -n 'Existe la "gente" '$gna' de la "peña" '$pn'. '; fi ; done; fi;
-done
+node tests/gente-penias.js
 echo '';
 #
 echo ''
-echo 'TESTS: Fecha_de-creación-peñas, test para ver si hay "fecha de creación" para todas las "peñas" en la BBDD'; echo -n '  -->  '
-for pn in $P ; do       #echo '$P= '$P', $pn= '$pn;
-   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
-   fh=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/lafechadecreacion.js);  #echo '$fh= '$fh
-   if (node tests/estavacia.js $fh); then echo 'BBDD test error - No hay "fecha de creacion" en la "peña" '$pna;
-   else echo -n 'Existe la "fecha de creación" '$fh' para la "quedada" '$qna'. '; fi ;
-done
+echo 'TESTS: Fecha-de-creación-peñas, test para ver si hay "fecha de creación" para todas las "peñas" en la BBDD'; echo -n '  -->  '
+node tests/fecha-creacion-penias.js
 echo '';
 #
 echo ''
 echo 'TESTS: Escudo-peñas, test para ver si hay "Escudo" para todas las "peñas" en la BBDD'; echo -n '  -->  '
-for pn in $P ; do       #echo '$P= '$P', $pn= '$pn;
-   pna=$(node tests/sincomillas $pn; 2> /dev/null); #echo '$pna= '$pna;
-   f=$(curl http://localhost:8080/penia/$pna 2> /dev/null | node tests/elescudo.js);       #echo '$f= '$f
-   if (node tests/estavacia.js $f); then echo 'BBDD test error - No hay "nombre de fichero de escudo" de la "peña" '$pna;
-   elif ! (node tests/existefichero.js $f); then echo 'MEDIA test error - No Hay "fichero del escudo" '$f' de la "peña" '$pna;
-   else echo -n 'Existe el "escudo" '$f' de la "peña" '$pna'. '; fi ;
-done
-echo '';
-#
+node tests/escudo-penias.js
 #
 echo ''
 echo 'TESTS: Alias-gente, test para ver si hay "alias" para toda la gente en la BBDD'; echo -n '  -->  '

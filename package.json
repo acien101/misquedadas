@@ -4,9 +4,9 @@
   "description": "Práctica final de FTEL",
   "main": "index.js",
   "scripts": {
-    "postinstall": "./misquedadas_postinstall",
-    "test": "./misquedadas_test",
-    "start": "./misquedadas_server"
+    "postinstall": "./npm_scripts/postinstall",
+    "test": "./npm_scripts/test",
+    "start": "./npm_scripts/server"
   },
   "author": "Ángel Fernández del Campo",
   "license": "ISC",

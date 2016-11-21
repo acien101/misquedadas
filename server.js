@@ -9,6 +9,6 @@ server.pre(restify.pre.sanitizePath());
 server.use(restify.queryParser());
 server.use(restify.bodyParser({maxBodySize: 10 * 1024}));
 //server.use(function(req,res,next){console.log('middleware 2 here',req.body);next();});
-server.on('after', restify.auditLogger({log: bunyan.createLogger({name: 'misquedadas log', stream: process.stdout })}));
+//server.on('after', restify.auditLogger({log: bunyan.createLogger({name: 'misquedadas log', stream: process.stdout })}));
 module.exports = server;
 require('./routes');

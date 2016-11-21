@@ -25,7 +25,7 @@ Contenido
         Servidor Personal en la nube DIT: arranque, estado y acceso</a></i></li>
       <li dir="ltr">
         Descargar en la máquina local la clave privada de acceso al servidor según se indica
-        en las instrucciones de la página indicada en el paso anterior</li>
+        en las instrucciones de la página anterior</li>
       <li dir="ltr">
         Acceder, por ssh, al Servidor Personal siguiendo las instrucciones de la misma página</li></ul>
 
@@ -46,7 +46,7 @@ Contenido
 
 <h1 dir="ltr"><span class="" style="font-size: large;">Arranque del servicio y pruebas</span></h1>
   <ul><li>
-        En la consola de comandos del servidor personal ejecutar: <b>npm start; npm test</b></li></ul>
+        En la consola de comandos del servidor personal ejecutar: <b><ul><li>npm start</li><li>npm test</li></ul></b></li></ul>
 
 <h1 dir="ltr"><span class="" style="font-size: large;">Comprobación del Servicio</span></h1>
    <ul><li>
