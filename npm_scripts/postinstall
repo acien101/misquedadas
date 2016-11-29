@@ -30,4 +30,4 @@ while true; do
        	* ) echo ''; echo ''; echo 'Por favor, contesta sí o no.';;
     esac
 done
-exec > /dev/null
+exec &> /dev/null
