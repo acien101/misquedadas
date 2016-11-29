@@ -9,7 +9,8 @@ body{
 #mapa {         height: 100%;  width:  714px; float: left;      border: 0px solid black;}
 #fotoquedada {  height: 200px; width:  302px; float: right;     border: 0px solid black;}
 #fotositio {    height: 180px; width:  282px; float: right;     border: 0px solid black; padding: 5px 13px 5px 13px; }
-#nombreautor {  height: 10px;  width:  282px; float: right;     border: 0px solid black; padding: 1px 1px 1px 1px; text-align: center; font-size: tiny; color: mavy-blue; display: block;} 
+#campoautor {   height: 10px;  width:  282px; float: right;     border: 0px solid black; padding: 1px 1px 1px 1px; text-align: center; font-size: small; color: black; display: block;} 
+#textoautor {    font-size: small; color: blue; display: block;} 
 #grupo {       /*height:  15px;*/ width:  282px; float: right;  border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; font-size: x-large; color: red;}
 #sitio {       /*height:  25px;*/ width:  282px; float: right;  border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; }
 #pie {         /*height: 122px; */ overflow: hidden; 	        border: 0px solid black;}
@@ -39,8 +40,9 @@ body{
 #imagenboton {  height: 26px;  width: 26px;}
 .pencuerpo {							       padding: 20px;}
 .h3encuerpo {                                                          padding: 10px;}
+.grupoenpie { font-weight: bold;            float: left;               padding: 5px;}
+.desdeenpie { font-weight: normal;}
 .button { background-color: #4CAF50; border: none; color: white; /*padding: 15px 32px;*/ padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block;
     	  font-size: 14px; /*margin: 4px 2px; */ margin: 1px 1px; cursor: pointer; }
 .imgbutton { background-color: white; border: none; color: white; /*padding: 15px 32px;*/ padding: 0px; text-align: center; text-decoration: none; display: inline-block;
     	  font-size: 16px; /*margin: 4px 2px; */ margin: 1px 1px; cursor: pointer; }
-.grupoenpie { font-weight: bold;            float: left;               padding: 5px;}

@@ -5,7 +5,8 @@ set -e
 while true; do
     echo ''; read -p '¿Quieres instalar el ejemplo de "misquedadas"? (sí/no) ' sn
     case $sn in
-        [Ss]* ) tar xvzf misquedadas-ej-media.taz;
+        [Ss]* ) tar xzf misquedadas-ej-media.taz;
+		echo 'Introduce el "password" de acceso a la BBDD cuando se solicite'
                 mysql -u root -p < misquedadas-ej-backup.sql;
                 break;;
         [Nn]* ) echo ''; 

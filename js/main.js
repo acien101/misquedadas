@@ -49,16 +49,16 @@ function pintamenugrupos(d){//console.log('pintamenugrupos '+d);
     x += '<ul>';
     for (i in d) { x+= '<li><a href="/grupo/'+d[i].nombre+'">'+d[i].nombre+'</a></li>'; }
     x+= '</ul>';
-    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a los grupos)</p><ul>';
+    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "javaScript" correspondientes a los grupos)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
 function pintamenugente(d){//console.log('pintamenugente '+d);
     var x= '<h3 class="h3encuerpo" >La gente registrada son:</h3>';
     x += '<ul>';
-    for (i in d) { x+= '<li><a href="/gente/'+d[i].id+'">'+d[i].nombre+'</a></li>'; }
+    for (i in d) { x+= '<li><a href="/gente/'+d[i].id+'">'+d[i].nombre+'.</a></li>'; }
     x+= '</ul>';
-    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a la persona)</p><ul>';
+    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "javaScript" correspondientes a la persona)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
@@ -67,7 +67,7 @@ function pintamenupertenece(d){//console.log('pintamenupertenece '+d);
     x += '<ul>';
     for (i in d) { x+= '<li><a href="/grupo/'+d[i].nombre+'">'+d[i].nombre+'</a>: <a href="/gente/'+d[i].id_gente+'">'+d[i].id_gente+'</a>.</li>'; }
     x+= '</ul>';
-    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a la persona)</p><ul>';
+    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "javaScript" correspondientes a la persona)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
@@ -76,7 +76,7 @@ function pintamenusitios(d){//console.log('pintamenusitios '+d);
     x += '<ul>';
     for (i in d) { x+= '<li><a href="/sitio/'+d[i].id+'">'+d[i].nombre+'</a></li>'; }
     x+= '</ul>';
-    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes al sitio)</p><ul>';
+    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "javaScript" correspondientes al sitio)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
@@ -160,7 +160,7 @@ function pintadatossitio(d){//console.log('pintadatossitio '+d);
 function pintagrupos(d){//console.log('pintagrupos '+d);
     for (i in d) {
        //console.log('pintagrupos - I= '+i+', nombre= '+d[i].nombre);
-        var x= '<div class="grupoenpie" id="grupoenpie'+i+'">'+d[i].nombre+' <i>desde '+d[i].fecha_creacion.replace(/T.*/,'')+'</i><br />';
+        var x= '<div class="grupoenpie" id="grupoenpie'+i+'">'+d[i].nombre+'<span class="desdeenpie">, desde '+d[i].fecha_creacion.replace(/T.*/,'')+'.</span><br />';
         document.getElementById('pie').innerHTML += x;
         ajaxCall('/pertenencias/'+d[i].nombre,obtentagentegrupo,i);
         var x= '</div>';

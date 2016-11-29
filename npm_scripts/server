@@ -4,8 +4,10 @@
 set -e
 p=$$
 d=`date +%F`
+killall node &> /dev/null; killall node &> /dev/null
 echo ""
 echo "arrancando el servicio de \"misquedadas\"."
 echo ""
 echo "    -- El log de resultados está en \"logs/\" con fecha de hoy y número de proceso"
+echo ""
 node . > logs/$d-$p.log &
