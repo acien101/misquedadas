@@ -72,28 +72,28 @@ INSERT INTO `gente` VALUES (1,'g1','g1','G1.png'),(2,'g 2','g 2','G2.png'),(3,'g
 UNLOCK TABLES;
 
 --
--- Table structure for table `peña`
+-- Table structure for table `grupo`
 --
 
-DROP TABLE IF EXISTS `peña`;
+DROP TABLE IF EXISTS `grupo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `peña` (
+CREATE TABLE `grupo` (
   `nombre` varchar(30) NOT NULL,
-  `fecha_creación` date DEFAULT NULL,
+  `fecha_creacion` date DEFAULT NULL,
   `escudo` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `peña`
+-- Dumping data for table `grupo`
 --
 
-LOCK TABLES `peña` WRITE;
-/*!40000 ALTER TABLE `peña` DISABLE KEYS */;
-INSERT INTO `peña` VALUES ('p1','2001-01-01','P1.png'), ('p 2','2002-02-02','P2.png'), ('p3','2003-03-03','P3.png'), ('p 4','2004-04-04','P4.png'), ('p5','2005-05-05','P5.png'), ('p 6','2006-06-06','P6.png'), ('p7','2007-07-07','P7.png'), ('p 8','2008-08-08','P8.png'), ('p9','2009-09-09','P9.png'), ('p 10','2010-10-10','P10.png');
-/*!40000 ALTER TABLE `peña` ENABLE KEYS */;
+LOCK TABLES `grupo` WRITE;
+/*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
+INSERT INTO `grupo` VALUES ('p1','2001-01-01','P1.png'), ('p 2','2002-02-02','P2.png'), ('p3','2003-03-03','P3.png'), ('p 4','2004-04-04','P4.png'), ('p5','2005-05-05','P5.png'), ('p 6','2006-06-06','P6.png'), ('p7','2007-07-07','P7.png'), ('p 8','2008-08-08','P8.png'), ('p9','2009-09-09','P9.png'), ('p 10','2010-10-10','P10.png');
+/*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -130,7 +130,7 @@ DROP TABLE IF EXISTS `quedada`;
 CREATE TABLE `quedada` (
   `id` int(4) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
-  `nombre_peña` varchar(30) DEFAULT NULL,
+  `nombre_grupgrupo` varchar(30) DEFAULT NULL,
   `id_sitio` int(4) DEFAULT NULL,
   `fechahora` datetime DEFAULT NULL,
   `foto` varchar(30) DEFAULT NULL,

@@ -10,8 +10,8 @@ ddbb
   .catch(function (err) { console.log('Unable to connect to the database:', err); });
 
 var quedada = ddbb.import(path.join(__dirname,'models/quedada'));
-var penia = ddbb.import(path.join(__dirname,'models/penia'));
-    penia.removeAttribute('id');
+var grupo = ddbb.import(path.join(__dirname,'models/grupo'));
+    grupo.removeAttribute('id');
 var gente = ddbb.import(path.join(__dirname,'models/gente'));
 var sitio = ddbb.import(path.join(__dirname,'models/sitio'));
 var asistencia = ddbb.import(path.join(__dirname,'models/asistencia'));
@@ -20,7 +20,7 @@ var pertenencia = ddbb.import(path.join(__dirname,'models/pertenencia'));
     pertenencia.removeAttribute('id');
 
 quedada.sync({force: false}).then(function () {return quedada;});
-penia.sync({force: false}).then(function () {return penia;});
+grupo.sync({force: false}).then(function () {return grupo;});
 gente.sync({force: false}).then(function () {return gente;});
 sitio.sync({force: false}).then(function () {return sitio;});
 asistencia.sync({force: false}).then(function () {return asistencia;});

@@ -1,4 +1,4 @@
 exports.list = require('./list');
-exports.penia = require('./penia');
+exports.grupo = require('./grupo');
 exports.pertenencia = require('./pertenencia');
 

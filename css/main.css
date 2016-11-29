@@ -3,66 +3,44 @@ body{
   margin: 0; border: 0; padding: 0;
   background-color: white;
 }
-#main { height: 638px; width: 1022px; overflow: hidden; border: 0px solid black; padding: 2px; margin: 0 auto; background-color: #ccffcc;}
-#cabecera {    height:  30px;                overflow: hidden; border: 0px solid black;}
-#cuerpo {      height: 480px;                overflow: hidden; border: 0px solid black;}
-#mapa {        height: 100%;  width:  714px; float: left;      border: 0px solid black;}
-#fotoquedada { height: 200px; width:  302px; float: right;     border: 0px solid black;}
-#fotositio {   height: 180px; width:  282px; float: right;     border: 0px solid black; padding: 5px 13px 5px 13px; }
-#penia {       /*height:  15px;*/ width:  282px; float: right;     border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; font-size: x-large; color: red;}
-#sitio {       /*height:  25px;*/ width:  282px; float: right;     border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; }
-#pie {         height: 122px;                overflow: hidden; border: 0px solid black;}
-#asisten {       height: 256px; width:  302px; float: right;     border: 0px solid black;}
-#got{ border: 0px solid black }
-#map{ border: 0px solid black }
-#testing{ border: 0px solid black }
-#mapping{ border: 0px solid black }
-#mapid { height: 480px; }
+#main { 	height: 638px; width: 1022px; overflow: hidden; border: 0px solid black; padding: 2px; margin: 0 auto; background-color: #ccffcc;}
+#cabecera {     height:  30px;                overflow: hidden; border: 0px solid black;}
+#cuerpo {       height: 480px;                overflow: hidden; border: 0px solid black;}
+#mapa {         height: 100%;  width:  714px; float: left;      border: 0px solid black;}
+#fotoquedada {  height: 200px; width:  302px; float: right;     border: 0px solid black;}
+#fotositio {    height: 180px; width:  282px; float: right;     border: 0px solid black; padding: 5px 13px 5px 13px; }
+#nombreautor {  height: 10px;  width:  282px; float: right;     border: 0px solid black; padding: 1px 1px 1px 1px; text-align: center; font-size: tiny; color: mavy-blue; display: block;} 
+#grupo {       /*height:  15px;*/ width:  282px; float: right;  border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; font-size: x-large; color: red;}
+#sitio {       /*height:  25px;*/ width:  282px; float: right;  border: 0px solid black; padding: /*30*/5px 13px 0px 13px; text-align: center; }
+#pie {         /*height: 122px; */ overflow: hidden; 	        border: 0px solid black;}
+#asisten {      height: 256px; width:  302px; float: right;     border: 0px solid black;}
+#got{ 							        border: 0px solid black }
+#map{ 							        border: 0px solid black }
+#testing{ 						        border: 0px solid black }
+#mapping{ 						        border: 0px solid black }
+#mapid { 	height: 480px; }
 #fotoquedadacontent { height: 200px; width: 302px; }
-#fotositiocontent { height: 180px; width: 282px; }
-.piecontent { float: left; }
-.gentecontent { height: 70px; width:  55px; float: left; border: 0px solid black; padding: 7px; }
-.genteasiste { height: 28px; width:  20px; position: absolute; display: none; }
-#menuquedadas {float: left;  }
-#menupenias {float: left; }
-#menugente {float: left; }
-#menusitios {float: left; }
-#quedadanombre { width: 400px; margin: 1px; padding: 2px 2px; color: blue; float: left; text-align: center; text-decoration: none; font-size: 20px; font-weight: bold; }
-#quedadafecha {margin: 1px; padding: 5px 5px; color: red; float: left; text-align: center; text-decoration: none; font-size: 16px; font-weight: bold; }
-#botonnuevaquedada {float: right; margin: 0px; border: 0px; }
-#botonasistir {float: right; margin: 0px; border: 0px; }
-#botonnoasistir {float: right; margin: 0px; border: 0px; }
-#botonreplantear {float: right; margin: 0px; border: 0px; }
-#botonborrar {float: right; margin: 0px; border: 0px; }
-#imagenboton {width: 26px; height: 26px;}
-.pencuerpo {padding: 20px;}
-.h3encuerpo {padding: 10px;}
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    /*padding: 15px 32px;*/
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    /*margin: 4px 2px; */
-    margin: 1px 1px;
-    cursor: pointer;
-}
-.imgbutton {
-    background-color: white;
-    border: none;
-    color: white;
-    /*padding: 15px 32px;*/
-    padding: 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    /*margin: 4px 2px; */
-    margin: 1px 1px;
-    cursor: pointer;
-}
-.peniaenpie { font-weight: bold; float: left; padding: 5px;}
+#fotositiocontent {   height: 180px; width: 282px; }
+.piecontent { 				    float: left; }
+.gentecontent { height: 70px; width:  55px; float: left;        border: 0px solid black; padding: 7px; }
+.genteasiste {  height: 28px; width:  20px;                  position: absolute; display: none; }
+#menuquedadas {				    float: left; }
+#menugrupos {                               float: left; }
+#menugente {                                float: left; }
+#menusitios {                               float: left; }
+#quedadanombre {              width: 400px; float: left;  margin: 1px; padding: 2px 2px; color: blue; text-align: center; text-decoration: none; font-size: 20px; font-weight: bold; }
+#quedadafecha {                             float: left;  margin: 1px; padding: 5px 5px; color: red; text-align: center; text-decoration: none; font-size: 16px; font-weight: bold; }
+#botonnuevaquedada {                        float: right; margin: 0px; border: 0px; }
+#botonnuevaquedada {                        float: right; margin: 0px; border: 0px; }
+#botonasistir {                             float: right; margin: 0px; border: 0px; }
+#botonnoasistir {                           float: right; margin: 0px; border: 0px; }
+#botonreplantear {                          float: right; margin: 0px; border: 0px; }
+#botonborrar {                              float: right; margin: 0px; border: 0px; }
+#imagenboton {  height: 26px;  width: 26px;}
+.pencuerpo {							       padding: 20px;}
+.h3encuerpo {                                                          padding: 10px;}
+.button { background-color: #4CAF50; border: none; color: white; /*padding: 15px 32px;*/ padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block;
+    	  font-size: 14px; /*margin: 4px 2px; */ margin: 1px 1px; cursor: pointer; }
+.imgbutton { background-color: white; border: none; color: white; /*padding: 15px 32px;*/ padding: 0px; text-align: center; text-decoration: none; display: inline-block;
+    	  font-size: 16px; /*margin: 4px 2px; */ margin: 1px 1px; cursor: pointer; }
+.grupoenpie { font-weight: bold;            float: left;               padding: 5px;}

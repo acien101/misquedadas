@@ -1,6 +1,6 @@
 var path = require('path'); var sequelize = require('../../ddbb');
 var quedada = require('../../models');
-var penia = require('../../models');
+var grupo = require('../../models');
 var gente = require('../../models');
 var sitio = require('../../models');
 
@@ -20,13 +20,13 @@ module.exports = function serializeDDBB(req,res,next) {
        if (quedada) {ddbb['Quedadas']= quedada; resSend();}
        else throw new Error('Error: No hay quedada....')
    }).catch(function(error) {console.log('Error: function serializeDDBB- catch quedada... '+error);next(error)});
-   //console.log('serializeDDBB - Penias');
-   var penia = sequelize.import(path.join(__dirname,'../../models/penia'));
-   penia.all().then (function(penia) {
-       // ya son clavers únicas -- if (penia) {ddbb['Penias']= penia.filter(onlyUnique);  resSend(); }
-       if (penia) {ddbb['Penias']= penia;  resSend(); }
-       else throw new Error('Error: No hay penia....')
-   }).catch(function(error) {console.log('Error: function serializeDDBB- catch penia... '+error);next(error)});
+   //console.log('serializeDDBB - Grupos');
+   var grupo = sequelize.import(path.join(__dirname,'../../models/grupo'));
+   grupo.all().then (function(grupo) {
+       // ya son clavers únicas -- if (grupo) {ddbb['Grupos']= grupo.filter(onlyUnique);  resSend(); }
+       if (grupo) {ddbb['Grupos']= grupo;  resSend(); }
+       else throw new Error('Error: No hay grupo....')
+   }).catch(function(error) {console.log('Error: function serializeDDBB- catch grupo... '+error);next(error)});
    //console.log('serializeDDBB - Gente');
    var gente = sequelize.import(path.join(__dirname,'../../models/gente'));
    gente.all().then (function(gente) {

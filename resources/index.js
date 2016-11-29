@@ -1,5 +1,5 @@
 exports.quedadas = require('./quedadas');
-exports.penias = require('./penias');
+exports.grupos = require('./grupos');
 exports.gente = require('./gente');
 exports.sitios = require('./sitios');
 exports.asistencias = require('./asistencias');

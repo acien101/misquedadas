@@ -34,16 +34,16 @@ server.get ('/quedada/:id/foto', 	function(req,res,next) {console.log('route!! g
 					resources.quedadas.foto); 
 server.get ('/quedada/:id/sitio',	function(req,res,next) {console.log('route!! get /quedada/:id/sitio'); next();},
 					resources.quedadas.sitio); 
-server.get ('/quedada/:id/penia',	function(req,res,next) {console.log('route!! get /quedada/:id/penia'); next();},
-					resources.quedadas.penia); 
+server.get ('/quedada/:id/grupo',	function(req,res,next) {console.log('route!! get /quedada/:id/grupo'); next();},
+					resources.quedadas.grupo); 
 server.get ('/quedada/:id/asisten',	function(req,res,next) {console.log('route!! get /quedada/:id/asisten'); next();},
 					resources.quedadas.asisten); 
-server.get('/penias', 			function(req,res,next) {console.log('route!! get /penias'); next();},
-					resources.penias.list); 
-server.get('/penia/:nombre', 		function(req,res,next) {console.log('route!! get /penia/:nombre'); next();},
-					resources.penias.penia); 
-server.get('/penia/:nombre/escudo',	function(req,res,next) {console.log('route!! get /penia/:nombre/escudo'); next();},
-					resources.penias.escudo); 
+server.get('/grupos', 			function(req,res,next) {console.log('route!! get /grupos'); next();},
+					resources.grupos.list); 
+server.get('/grupo/:nombre', 		function(req,res,next) {console.log('route!! get /grupo/:nombre'); next();},
+					resources.grupos.grupo); 
+server.get('/grupo/:nombre/escudo',	function(req,res,next) {console.log('route!! get /grupo/:nombre/escudo'); next();},
+					resources.grupos.escudo); 
 
 server.get('/gente', 			function(req,res,next) {console.log('route!! /gente'); next();},
 					resources.gente.list); 
@@ -67,7 +67,7 @@ server.del ('/asistencias/:idq/:idg',	function(req,res,next) {console.log('route
 server.get('/pertenencias',		function(req,res,next) {console.log('route!! get /pertenencias'); next();},
 					resources.pertenencias.list); 
 server.get('/pertenencias/:nombre',	function(req,res,next) {console.log('route!! get /pertenencias/:nombre'); next();},
-					resources.pertenencias.penia); 
+					resources.pertenencias.grupo); 
 server.post ('/botones/nueva',		function(req,res,next) {console.log('route!! post /boton/nueva'); next();},
 					resources.botones.nueva); 
 server.post ('/botones/replantea',	function(req,res,next) {console.log('route!! post /boton/replantea'); next();},

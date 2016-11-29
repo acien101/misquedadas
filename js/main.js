@@ -44,12 +44,12 @@ function pintamenuquedadas(d){//console.log('pintamenuquedadas '+d);
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
-function pintamenupenias(d){//console.log('pintamenupenias '+d);
-    var x= '<h3 class="h3encuerpo" >Las peñas registradas son:</h3>';
+function pintamenugrupos(d){//console.log('pintamenugrupos '+d);
+    var x= '<h3 class="h3encuerpo" >Las grupos registradas son:</h3>';
     x += '<ul>';
-    for (i in d) { x+= '<li><a href="/penia/'+d[i].nombre+'">'+d[i].nombre+'</a></li>'; }
+    for (i in d) { x+= '<li><a href="/grupo/'+d[i].nombre+'">'+d[i].nombre+'</a></li>'; }
     x+= '</ul>';
-    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a las peñas)</p><ul>';
+    x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a los grupos)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
     document.getElementById('cuerpo').innerHTML = x;
 }
@@ -63,9 +63,9 @@ function pintamenugente(d){//console.log('pintamenugente '+d);
     document.getElementById('cuerpo').innerHTML = x;
 }
 function pintamenupertenece(d){//console.log('pintamenupertenece '+d);
-    var x= '<h3 class="h3encuerpo" >Los componentes de las peñas son:</h3>';
+    var x= '<h3 class="h3encuerpo" >Los componentes de los grupos son:</h3>';
     x += '<ul>';
-    for (i in d) { x+= '<li><a href="/penia/'+d[i].nombre+'">'+d[i].nombre+'</a>: <a href="/gente/'+d[i].id_gente+'">'+d[i].id_gente+'</a>.</li>'; }
+    for (i in d) { x+= '<li><a href="/grupo/'+d[i].nombre+'">'+d[i].nombre+'</a>: <a href="/gente/'+d[i].id_gente+'">'+d[i].id_gente+'</a>.</li>'; }
     x+= '</ul>';
     x += '<p class="pencuerpo">(los hipervínculos presentan las estructuras "node" correspondientes a la persona)</p><ul>';
     x+= '<br /><br />&nbsp;&nbsp;<a href="/">Volver</a>';
@@ -92,7 +92,7 @@ function pintafecha(d){//console.log('pintafecha '+d);
 }
 function pintafecha_de_creacion(d){console.log('pintafecha_de_creacion '+d);
     var x= d.fecha_de_creacion.replace(/T/,' a las ').replace(/\..+/,''); 
-    document.getElementById('peniafecha_de_creacion').innerHTML = x;
+    document.getElementById('grupofecha_de_creacion').innerHTML = x;
 }
 
 //   - Buttons implementations -
@@ -137,14 +137,14 @@ function pintafotoquedada(d){//console.log('pintafotoquedada '+d);
     var x= '<img id="fotoquedadacontent" src="/media/'+d.foto+'" title="id '+d.id+', nombre '+d.nombre+', '+d.foto+'">'; 
     document.getElementById('fotoquedada').innerHTML = x;
 }
-//   - Peña quedada implementations -
-function pintapenia(d){console.log('pintapenia '+d);
+//   - Grupo quedada implementations -
+function pintagrupo(d){//console.log('pintagrupo '+d);
     var x= d+' !!!';
-    console.log(x);
-    document.getElementById('penia').innerHTML = x;
+    //console.log(x);
+    document.getElementById('grupo').innerHTML = x;
 }
 //   - Sitio quedada implementations -
-function pintasitio(d){console.log('pintasitio '+d);
+function pintasitio(d){//console.log('pintasitio '+d);
     ajaxCall('/sitio/'+d, pintadatossitio);
 }
 function pintadatossitio(d){//console.log('pintadatossitio '+d);
@@ -156,30 +156,30 @@ function pintadatossitio(d){//console.log('pintadatossitio '+d);
 
 //   ------  pie implementations ------------
 
-//   - Peñas implementations -
-function pintapenias(d){//console.log('pintapenias '+d);
+//   - Grupos implementations -
+function pintagrupos(d){//console.log('pintagrupos '+d);
     for (i in d) {
-       //console.log('pintapenias - I= '+i+', nombre= '+d[i].nombre);
-        var x= '<div class="peniaenpie" id="peniaenpie'+i+'">'+d[i].nombre+' <i>desde '+d[i].fecha_creación.replace(/T.*/,'')+'</i><br />';
+       //console.log('pintagrupos - I= '+i+', nombre= '+d[i].nombre);
+        var x= '<div class="grupoenpie" id="grupoenpie'+i+'">'+d[i].nombre+' <i>desde '+d[i].fecha_creacion.replace(/T.*/,'')+'</i><br />';
         document.getElementById('pie').innerHTML += x;
-        ajaxCall('/pertenencias/'+d[i].nombre,obtentagentepenia,i);
+        ajaxCall('/pertenencias/'+d[i].nombre,obtentagentegrupo,i);
         var x= '</div>';
         document.getElementById('pie').innerHTML += x;
     }
 }
 
 //   - Gente implementations -
-function obtentagentepenia(d,p){//console.log('obtentagentepenia - penia= '+p+', d= '+d);
+function obtentagentegrupo(d,p){//console.log('obtentagentegrupo - grupo= '+p+', d= '+d);
     for (i in d) {
-       //console.log('obtentagentepenia - I= '+i+', id.gente '+d[i].id_gente);
-       ajaxCall('/gente/'+d[i].id_gente,pintaindividuopenia,p);
+       //console.log('obtentagentegrupo - I= '+i+', id.gente '+d[i].id_gente);
+       ajaxCall('/gente/'+d[i].id_gente,pintaindividuogrupo,p);
     }
 }
-function pintaindividuopenia(d,p){//console.log('pintaindividuopenia '+d);
-       //console.log('pintaindividuopenia - id '+d.id+', nombre= '+d.nombre+', alias= '+d.alias);
+function pintaindividuogrupo(d,p){//console.log('pintaindividuogrupo '+d);
+       //console.log('pintaindividuogrupo - id '+d.id+', nombre= '+d.nombre+', alias= '+d.alias);
        var x='<div class="piecontent"> <img id="foto'+d.id+'" class="gentecontent" src="/media/'+d.foto+'" title="id '+d.id+', nombre '+d.nombre+', alias '+d.alias+', '+d.foto+'">';
        x+= '<img id="asiste'+d.id+'" class="genteasiste" src="/icons/asistir.jpg"></div>';
-       var divp='peniaenpie'+p;
+       var divp='grupoenpie'+p;
        document.getElementById(divp).innerHTML += x;
 }
 
@@ -213,8 +213,8 @@ function mainpage() {
       ajaxCall('/quedada/'+lqa,pintafecha);
       ajaxCall('/quedada/'+lqa+'/sitio',pintamapasitio);
       ajaxCall('/quedada/'+lqa,pintafotoquedada);
-      ajaxCall('/quedada/'+lqa+'/penia',pintapenia);
+      ajaxCall('/quedada/'+lqa+'/grupo',pintagrupo);
       ajaxCall('/quedada/'+lqa+'/sitio',pintasitio);
-      ajaxCall('/penias/',pintapenias); setTimeout(polltodalagente, 3000); 
+      ajaxCall('/grupos/',pintagrupos); setTimeout(polltodalagente, 3000); 
 }
 

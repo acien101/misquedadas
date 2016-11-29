@@ -21,6 +21,6 @@ TESTS PROCEDURE
 TESTS CASES
 -- test001 - tests de gentes: Base de datos con una quedada y 10 gente. Las personas han de tener algún nombre o alias con " ".
 -- test002 - tests de sitios: Base de datos con 10 quedadas y 10 sitios. Las quedadas y los sitios han de tener el nombre y el sitio con " ".
--- test003 - tests de peñas:  Base de datos con 10 peñas, 10 gente y 10 sitios, cada peña tiene una gente. Las peñas y las gentes han de tener el nombre y el sitio con " ".
--- test004 - tests de peñas:  Base de datos con 10 peñas, 10 gente y 10 sitios, cada peña tiene una gente. Todos las tablas han de tener el nombre y el sitio con " ", "ñ" y acentos.
--- test005 - tests de peñas:  Base de datos con 10 peñas, 10 gente, 10 sitios y 10 asistencias, cada peña tiene una gente cada gente asiste a una quedada. Todos las tablas han de tener el nombre y el sitio con " ", "ñ" y acentos.
+-- test003 - tests de grupos: Base de datos con 10 grupos, 10 gente y 10 sitios, cada grupo tiene una gente. Los grupos y las gentes han de tener el nombre y el sitio con " ".
+-- test004 - tests de grupos: Base de datos con 10 grupos, 10 gente y 10 sitios, cada grupo tiene una gente. Todos las tablas han de tener el nombre y el sitio con " ", "ñ" y acentos.
+-- test005 - tests de grupos: Base de datos con 10 grupos, 10 gente, 10 sitios y 10 asistencias, cada grupo tiene una gente cada gente asiste a una quedada. Todos las tablas han de tener el nombre y el sitio con " ", "ñ" y acentos.
