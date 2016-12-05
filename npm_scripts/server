@@ -1,7 +1,7 @@
 #!/bin/bash
 #set -x
 #set -v
-set -e
+#set -e  No poner porque da problemas con el comando "killall" que viene a continuación
 p=$$
 d=`date +%F`
 killall node &> /dev/null; killall node &> /dev/null
