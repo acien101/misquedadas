@@ -3,18 +3,6 @@
 #set -v
 set -e
 while true; do
-    echo ''; read -p '¿Quieres instalar el ejemplo de "misquedadas"? (sí/no) ' sn
-    case $sn in
-        [Ss]* ) tar xzf misquedadas-ej-media.taz;
-		echo 'Introduce el "password" de acceso a la BBDD cuando se solicite'
-                mysql -u root -p < misquedadas-ej-backup.sql;
-                break;;
-        [Nn]* ) echo ''; 
-                echo 'Rellena tu propia BBDD y guarda los ficheros multimedia con las fotos en "./media/"'; break;;
-        * ) echo ''; echo 'Por favor, contesta sí o no.';;
-    esac
-done
-while true; do
     echo '';
     echo 'Cuando acabe esta instalación has de:'
     echo '-- descargar de Moodle el fichero "mapkeys.js" y guardarlo en "/home/ftel/misquedadas/js/" del servidor personal'
