@@ -3,7 +3,7 @@ body{
   margin: 0; border: 0; padding: 0;
   background-color: white;
 }
-#main { 	height: 638px; width: 1022px; overflow: hidden; border: 0px solid black; padding: 2px; margin: 0 auto; background-color: #ccffcc;}
+#main { 	height: 732px; width: 1022px; overflow: hidden; border: 0px solid black; padding: 2px; margin: 0 auto; background-color: #ccffcc;}
 #cabecera {     height:  30px;                overflow: hidden; border: 0px solid black;}
 #cuerpo {       height: 480px;                overflow: hidden; border: 0px solid black;}
 #mapa {         height: 100%;  width:  714px; float: left;      border: 0px solid black;}
